@@ -12,7 +12,7 @@ routes.post('/create', async(req, res)=>{
     //console.log("body ", data)
     try {
         const result = await methods.createCV(data)
-        console.log("result ", result)
+        //console.log("result ", result)
         if (result !== null || result !== undefined)  {
           return  res.status(200).json(result)
         }else{

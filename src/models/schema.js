@@ -49,6 +49,6 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Compilar el modelo a partir del esquema
-const Cv = (mongoose.models.Cv || mongoose.model<UserSchema>("Cv",UserSchema,"Cv"))
-module.exports = Cv;
+const User = mongoose.model("Cv", UserSchema, "Cv")
+module.exports = User;
 
