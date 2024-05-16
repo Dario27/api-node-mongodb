@@ -1,11 +1,10 @@
 const User  = require('../models/schema.js')
-const conectar = require('../DB/conexion.js')
-const mongoose = require('mongoose')
-const dbName = 'tarea'
 
-async function  findOneAndUpdate  (data)  {
+//const dbName = 'tarea'
+
+async function  findOneAndUpdate(data)  {
         try {
-            const res = await User.findOne({"email":email})
+            const res = await User.find({"basics.nombre":data.nombre}) //"basics.nombre":"Melanie Sanchez"
             console.log("res 1 =>", res)
             if (res != null)
                return res   
