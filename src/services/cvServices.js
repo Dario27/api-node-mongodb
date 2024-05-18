@@ -3,9 +3,13 @@ const User  = require('../models/schema.js')
 //const dbName = 'tarea'
 
 async function  findOneAndUpdate(data)  {
+    const id = parseInt(data.id)
         try {
-            const res = await User.find({"basics.nombre":data.nombre}) //"basics.nombre":"Melanie Sanchez"
-            console.log("res 1 =>", res)
+            const res = await User.findOneAndUpdate(
+                {"id":id}, 
+               { $set:  {"basics.nombre":data.nombre}}, 
+                {new: true})
+            console.log("res  =>", res)
             if (res != null)
                return res   
             return null
@@ -24,7 +28,35 @@ async function createCV(data) {
         }
 }
 
+async function findAll(){
+    try {
+        const res = await User.find() //muestra todos los documentos
+        console.log("res 1 =>", res)
+        if (res != null)
+           return res   
+        return null
+    } catch (error) {
+       return error.message
+    }
+}
+
+async function findOne(data){
+    console.log("data 1 =>", data)
+    const id = parseInt(data.id)
+    try {
+        const res = await User.findOne({"id":id})
+        console.log("res =>", res)
+        if (res != null)
+           return res   
+        return null
+    } catch (error) {
+       return error.message
+    }
+}
+
 module.exports = {
     findOneAndUpdate,
-    createCV
+    createCV,
+    findAll,
+    findOne
 }

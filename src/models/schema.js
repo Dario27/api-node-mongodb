@@ -26,7 +26,9 @@ const EducationSchema = new mongoose.Schema({
 
 // squema principal
 const UserSchema = new mongoose.Schema({
-  id: String,
+  id: {
+    type: Number
+  },
   basics: {
     nombre: String,
     edad: String,
