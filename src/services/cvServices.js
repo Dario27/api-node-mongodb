@@ -54,9 +54,24 @@ async function findOne(data){
     }
 }
 
+async function findOneAndDelete(data){
+    console.log("data 1 =>", data)
+    const id = parseInt(data.id)
+    try {
+        const res = await User.findOneAndDelete({"id":id})
+        console.log("res =>", res)
+        if (res != null)
+           return res   
+        return null
+    } catch (error) {
+       return error.message
+    }
+}
+
 module.exports = {
     findOneAndUpdate,
     createCV,
     findAll,
+    findOneAndDelete,
     findOne
 }

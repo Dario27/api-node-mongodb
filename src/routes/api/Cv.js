@@ -66,6 +66,19 @@ routes.post('/updatecv', async(req, res)=>{
     }
 })
 
+routes.post('/delete', async(req, res)=>{
+    const data = req.body
+    try {
+        const result = await methods.findOneAndDelete(data)
+        return  res.status(200).json(
+            {message:"Documento eliminado correctamente"}
+        )
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send(' error al editar cv: '+ error) 
+    }
+})
+
 routes.post('/create', async(req, res)=>{
     const data = req.body
     //console.log("body ", data)
